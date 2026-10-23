@@ -7,11 +7,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify owned behavior
-        shell: bash
-        run: |
-          if [ "$(cat app.txt)" != good ]; then
-            echo '::error file=app.txt,line=1::OWNED_SOURCE_DEFECT: app.txt must contain good'
-            exit 1
-          fi
-          echo 'OWNED_SOURCE_OK: app.txt contains good'
+      - uses: ./.github/actions/check
